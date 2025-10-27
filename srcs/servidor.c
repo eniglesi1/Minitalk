@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   servidor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eniglesi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eiglesia <eiglesia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:15 by eniglesi          #+#    #+#             */
-/*   Updated: 2022/05/09 20:41:17 by eniglesi         ###   ########.fr       */
+/*   Updated: 2025/10/27 17:06:43 by eiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,6 @@
 #include <signal.h>
 #include <string.h>
 #include "../includes/printf/ft_printf.h"
-
-char	*savechar(char *i, char *str)
-{
-	char			*aux;
-	unsigned long	j;
-
-	j = 0;
-	aux = malloc(sizeof(char) * ft_strlen(str) + 2);
-	if (!aux)
-		exit(write(1, "Error", 5) - 5);
-	while (j++ < ft_strlen(str))
-		aux[j - 1] = str[j - 1];
-	aux[j - 1] = *i;
-	aux[j] = 0;
-	free(str);
-	*i = 0;
-	return (aux);
-}
-
-char	*print_str(char *str)
-{
-	write(1, str, ft_strlen(str));
-	free(str);
-	return (0);
-}
 
 void	btoa(int signal)
 {
@@ -73,6 +48,6 @@ int	main(void)
 	signal(30, btoa);
 	signal(31, btoa);
 	while (1)
-		sleep(1);
+		pause();
 	return (0);
 }

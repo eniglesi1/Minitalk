@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cliente.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eniglesi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eiglesia <eiglesia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:33 by eniglesi          #+#    #+#             */
-/*   Updated: 2022/05/09 20:41:36 by eniglesi         ###   ########.fr       */
+/*   Updated: 2025/10/27 16:55:21 by eiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,6 @@ void	send_binary(char c, pid_t pid_server, int len)
 			kill(pid_server, 30);
 		if (len <= 500)
 			usleep(50);
-		else if (len > 500 && len < 1000)
-			usleep(len / 10);
-		else if (len > 100000)
-			usleep(1500);
-		else
-			usleep(1000);
 		num--;
 	}
 }

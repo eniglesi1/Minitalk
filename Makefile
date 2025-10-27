@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eniglesi <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: eiglesia <eiglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/10 13:08:14 by eniglesi          #+#    #+#              #
-#    Updated: 2022/05/10 13:08:17 by eniglesi         ###   ########.fr        #
+#    Updated: 2025/10/27 16:42:34 by eiglesia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ OBJ_S = $(SRC_S:.c=.o)
 
 LIB = ./includes/printf/libftprintf.a
 
-NAME_S = servidor
-NAME_C = cliente
-FLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
+NAME_S = server
+NAME_C = client
+FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME_S) $(NAME_C)
 
@@ -29,11 +29,11 @@ all: $(NAME_S) $(NAME_C)
 
 $(NAME_S): $(OBJ_S)
 	@make -C ./includes/printf
-	gcc $(FLAGS) $(OBJ_S) $(LIB) -o $(NAME_S)
+	cc $(FLAGS) $(OBJ_S) $(LIB) -o $(NAME_S)
 
 $(NAME_C): $(OBJ_C)
 	@make -C ./includes/printf
-	gcc $(FLAGS) $(OBJ_C) $(LIB) -o $(NAME_C)
+	cc $(FLAGS) $(OBJ_C) $(LIB) -o $(NAME_C)
 
 clean:
 	/bin/rm -f $(OBJ_S) $(OBJ_C)
