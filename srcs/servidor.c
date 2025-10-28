@@ -6,7 +6,7 @@
 /*   By: eiglesia <eiglesia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:15 by eniglesi          #+#    #+#             */
-/*   Updated: 2025/10/27 17:06:43 by eiglesia         ###   ########.fr       */
+/*   Updated: 2025/10/28 13:32:05 by eiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <string.h>
 #include "../includes/printf/ft_printf.h"
 
-void	btoa(int signal)
+static void	btoa(int signal, siginfo_t *info, void *context)
 {
 	static char	c;
 	static int	num;
@@ -37,17 +37,21 @@ void	btoa(int signal)
 		num = 8;
 		c = 0;
 	}
+	if (context == NULL)
+		write(1, "", 0);
+	kill(info->si_pid, 31);
 }
 
 int	main(void)
 {
-	pid_t	pid_server;
+	struct sigaction	sa;
 
-	pid_server = getpid();
-	ft_printf("Pid del servidor = %d\n", pid_server);
-	signal(30, btoa);
-	signal(31, btoa);
+	ft_printf("Pid del servidor = %d\n", getpid());
+	sa.sa_flags = SA_SIGINFO;
+	sa.sa_sigaction = btoa;
+	sigaction(30, &sa, NULL);
+	sigaction(31, &sa, NULL);
 	while (1)
-		pause();
+		usleep(50);
 	return (0);
 }
