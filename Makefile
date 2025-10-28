@@ -6,7 +6,7 @@
 #    By: eiglesia <eiglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/10 13:08:14 by eniglesi          #+#    #+#              #
-#    Updated: 2025/10/27 16:42:34 by eiglesia         ###   ########.fr        #
+#    Updated: 2025/10/28 13:52:34 by eiglesia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,16 +32,16 @@ $(NAME_S): $(OBJ_S)
 	cc $(FLAGS) $(OBJ_S) $(LIB) -o $(NAME_S)
 
 $(NAME_C): $(OBJ_C)
-	@make -C ./includes/printf
+	@make -s -C ./includes/printf
 	cc $(FLAGS) $(OBJ_C) $(LIB) -o $(NAME_C)
 
 clean:
 	/bin/rm -f $(OBJ_S) $(OBJ_C)
-	@make clean -C ./includes/printf
+	@make clean -s -C ./includes/printf
 
 fclean: clean
 	/bin/rm -f $(NAME_C) $(NAME_S)
-	@make fclean -C ./includes/printf
+	@make fclean -s -C ./includes/printf
 	
 re: fclean all
 

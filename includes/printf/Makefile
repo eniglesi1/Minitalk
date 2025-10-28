@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: eiglesia <eiglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/10 18:41:58 by eniglesi          #+#    #+#              #
-#    Updated: 2021/09/18 13:19:52 by marvin           ###   ########.fr        #
+#    Updated: 2025/10/28 13:54:52 by eiglesia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,15 +23,15 @@ all: $(NAME)
 	$(CC) -c $(FLAGS) $< -o $@
 
 $(NAME): $(OBJS) ft_printf.h
-	@make -C ./libft
+	@make -s -C ./libft
 	ar -crs $(NAME) $(OBJS) $(LIB) ./libft/*.o
 
 clean:
 	/bin/rm -f $(OBJS)
-	@make clean -C ./libft
+	@make clean -s -C ./libft
 
 fclean: clean
 	/bin/rm -f $(NAME)
-	@make fclean -C ./libft
+	@make fclean -s -C ./libft
 	
 re: fclean all
