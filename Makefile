@@ -6,7 +6,7 @@
 #    By: eiglesia <eiglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/10 13:08:14 by eniglesi          #+#    #+#              #
-#    Updated: 2025/10/28 13:52:34 by eiglesia         ###   ########.fr        #
+#    Updated: 2025/10/28 13:58:53 by eiglesia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ all: $(NAME_S) $(NAME_C)
 	$(CC) -c $(FLAGS) $< -o $@
 
 $(NAME_S): $(OBJ_S)
-	@make -C ./includes/printf
+	@make -s -C ./includes/printf
 	cc $(FLAGS) $(OBJ_S) $(LIB) -o $(NAME_S)
 
 $(NAME_C): $(OBJ_C)
